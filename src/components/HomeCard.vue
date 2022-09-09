@@ -1,0 +1,112 @@
+<template>
+  <div class = "home">
+    <div class = "home_page_img">
+      <img id = "logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg" />
+    </div> 
+    <div class = "login_section">
+      <div class = "login_card">
+        <form>
+          
+        </form>
+        <button id = "login_btn">Log In</button>
+        <button id = "signup_btn">Create new account</button>
+      </div>
+    </div>
+    
+  </div>
+ 
+</template>
+
+<!-- <img id = "logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg"></img> -->
+
+<script>
+export default {
+  name: 'HomeCard'
+}
+</script>
+
+<!-- Add "scoped" attribute to limit CSS to this component only -->
+<style>
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.home {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+  background-color: lightgrey;
+  border: 5px solid green;
+}
+
+.home_page_img {
+  display: inline-block;
+  justify-content: start;
+  height: 8rem;
+  width: 33%;
+  margin: 20rem 0 0 10rem;
+  /* border: 3px solid red; */
+}
+
+#logo {
+  height: 5rem;
+}
+
+.login_section {
+  display: inline-block;
+  justify-content: end;
+  width: 33%;
+  height: auto;
+  margin: 12rem 15rem 0 0;
+  /* border: 4px solid black; */
+}
+
+.login_card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 5px;
+  width: 100%;
+  height: 25rem;
+  margin-bottom: 10px;
+  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.867);
+}
+
+#login_btn {
+  
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 1rem;
+  width: 15rem;
+  margin: 2rem 0 0 8.5rem;
+  font-size: 14px;
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 5px gray;
+  background: linear-gradient(to bottom right, #9E9CE2, #1913E3); 
+}
+
+#login_btn:hover {
+  filter: brightness(90%);
+}
+
+#signup_btn {
+  cursor: pointer;
+  border-radius: 25px;
+  padding: 1rem;
+  width: 15rem;
+  margin: 2rem 0 0 8.5rem;
+  font-size: 14px;
+  color: white;
+  border: none;
+  box-shadow: 5px 5px 5px gray;
+  background: linear-gradient(to bottom right, #7BDCA1, #05CD54); 
+}
+
+
+</style>
