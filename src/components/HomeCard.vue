@@ -5,8 +5,10 @@
     </div> 
     <div class = "login_section">
       <div class = "login_card">
-        <form>
-
+        <form class = "login_form">
+          <label for ="email-input"></label>
+          <input id = "email" placeholder="email" name = "email" type = "text"/>
+          <input id = "password" placeholder = "password" name = "password" type = "text"/>
         </form>
         <button id = "login_btn">Log In</button>
         <button id = "signup_btn">Create new account</button>
@@ -17,7 +19,7 @@
  
 </template>
 
-<!-- <img id = "logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg"></img> -->
+
 
 <script>
 export default {
@@ -25,7 +27,7 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+
 <style>
 
 * {
@@ -58,10 +60,37 @@ export default {
   height: 5rem;
 }
 
+.login_form {
+  display: flex;
+  flex-direction: column;
+  margin: 1rem 4rem 0 4rem;
+}
+
+label, input {
+  padding: .5rem;
+  box-sizing: border-box;
+  text-align: center;
+  font-weight: 400;
+  font-size: medium;
+}
+
+#email {
+  height: 2.7rem;
+  border-radius: 20px;
+}
+
+#password {
+  height: 2.7rem;
+  border-radius: 20px;
+  margin-top: 2rem;
+}
+
+
+
 .login_section {
   display: inline-block;
   justify-content: end;
-  width: 33%;
+  width: 35%;
   height: auto;
   margin: 12rem 15rem 0 0;
   /* border: 4px solid black; */
@@ -82,10 +111,10 @@ export default {
   cursor: pointer;
   border-radius: 25px;
   padding: 1rem;
-  width: 15rem;
-  margin: 12rem 0 0 8.8rem;
-  font-size: 20px;
-  color: white;
+  width: 17rem;
+  margin: 3rem 0 0 8.8rem;
+  font-size: 18px;
+  color: black;
   border: none;
   box-shadow: 5px 5px 5px gray;
   background: linear-gradient(to bottom right, #9E9CE2, #1913E3); 
@@ -102,10 +131,10 @@ export default {
   cursor: pointer;
   border-radius: 25px;
   padding: 1rem;
-  width: 15rem;
+  width: 17rem;
   margin: 2.2rem 0 0 8.8rem;
-  font-size: 20px;
-  color: white;
+  font-size: 18px;
+  color: black;
   border: none;
   box-shadow: 5px 5px 5px gray;
   background: linear-gradient(to bottom right, #7BDCA1, #05CD54); 
