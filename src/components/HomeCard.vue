@@ -6,7 +6,7 @@
     <div class = "login_section">
       <div class = "login_card">
         <form>
-          
+
         </form>
         <button id = "login_btn">Log In</button>
         <button id = "signup_btn">Create new account</button>
@@ -68,7 +68,7 @@ export default {
 }
 
 .login_card {
-  background-color: white;
+  background-color: #FBF9F9;
   border-radius: 15px;
   padding: 5px;
   width: 100%;
@@ -78,30 +78,33 @@ export default {
 }
 
 #login_btn {
-  
+  font-weight: bold;
   cursor: pointer;
   border-radius: 25px;
   padding: 1rem;
   width: 15rem;
-  margin: 2rem 0 0 8.5rem;
-  font-size: 14px;
+  margin: 12rem 0 0 8.8rem;
+  font-size: 20px;
   color: white;
   border: none;
   box-shadow: 5px 5px 5px gray;
   background: linear-gradient(to bottom right, #9E9CE2, #1913E3); 
 }
 
-#login_btn:hover {
+#login_btn:hover,
+#signup_btn:hover {
   filter: brightness(90%);
 }
 
 #signup_btn {
+  font-weight: bold;
+  font-style: normal;
   cursor: pointer;
   border-radius: 25px;
   padding: 1rem;
   width: 15rem;
-  margin: 2rem 0 0 8.5rem;
-  font-size: 14px;
+  margin: 2.2rem 0 0 8.8rem;
+  font-size: 20px;
   color: white;
   border: none;
   box-shadow: 5px 5px 5px gray;
