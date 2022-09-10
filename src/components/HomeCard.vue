@@ -7,11 +7,16 @@
       <div class = "login_card">
         <form class = "login_form">
           <label for ="email-input"></label>
-          <input id = "email" placeholder="email" name = "email" type = "text"/>
+            <input id = "email" placeholder="email" name = "email" type = "text"/>
+          <label for = "password-input"></label>
           <input id = "password" placeholder = "password" name = "password" type = "text"/>
         </form>
-        <button id = "login_btn">Log In</button>
-        <button id = "signup_btn">Create new account</button>
+          <router-link to ="/main">
+            <button id = "login_btn">Log In</button>
+          </router-link>
+          <router-link to ='/signup'>
+            <button id = "signup_btn">Create new account</button>
+          </router-link>
       </div>
     </div>
     
@@ -22,9 +27,13 @@
 
 
 <script>
+
 export default {
   name: 'HomeCard'
 }
+
+
+
 </script>
 
 
@@ -44,7 +53,7 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: lightgrey;
-  border: 5px solid green;
+  /* border: 5px solid green; */
 }
 
 .home_page_img {
@@ -52,7 +61,7 @@ export default {
   justify-content: start;
   height: 8rem;
   width: 33%;
-  margin: 20rem 0 0 10rem;
+  margin: 21.3rem 0 0 10rem;
   /* border: 3px solid red; */
 }
 
