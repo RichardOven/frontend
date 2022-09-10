@@ -1,29 +1,3 @@
 <template>
-  <HomeCard />
-  <router-view />
+    <p>This is where the main feed of posts will be</p>
 </template>
-
-
-
-<script>
-
-import HomeCard from '../components/HomeCard.vue';
-
-
-export default {
-  name: 'Home',
-  components: {
-    HomeCard
-  }
-}
-
-</script>
-
-
-
-
-
-<style>
-
-
-</style>

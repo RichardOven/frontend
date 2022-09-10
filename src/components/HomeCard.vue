@@ -11,7 +11,7 @@
           <label for = "password-input"></label>
           <input id = "password" placeholder = "password" name = "password" type = "text"/>
         </form>
-          <router-link to ="/main">
+          <router-link to ="/home">
             <button id = "login_btn">Log In</button>
           </router-link>
           <router-link to ='/signup'>
