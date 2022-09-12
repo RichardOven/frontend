@@ -61,7 +61,7 @@ export default {
   justify-content: start;
   height: 8rem;
   width: 33%;
-  margin: 21.3rem 0 0 10rem;
+  margin: 21.3rem 0 0 16.5rem;
   /* border: 3px solid red; */
 }
 
@@ -95,13 +95,12 @@ label, input {
 }
 
 
-
 .login_section {
   display: inline-block;
   justify-content: end;
   width: 35%;
   height: auto;
-  margin: 12rem 15rem 0 0;
+  margin: 12rem 13rem 0 0;
   /* border: 4px solid black; */
 }
 
@@ -121,12 +120,12 @@ label, input {
   border-radius: 25px;
   padding: 1rem;
   width: 17rem;
-  margin: 3rem 0 0 8.8rem;
+  margin: 3rem 0 0 8.5rem;
   font-size: 18px;
   color: black;
   border: none;
   box-shadow: 5px 5px 5px gray;
-  background: linear-gradient(to bottom right, #9E9CE2, #1913E3); 
+  background: linear-gradient(to bottom right, #9E9CE2, #2e27e4); 
 }
 
 #login_btn:hover,
@@ -141,7 +140,7 @@ label, input {
   border-radius: 25px;
   padding: 1rem;
   width: 17rem;
-  margin: 2.2rem 0 0 8.8rem;
+  margin: 2.2rem 0 0 8.5rem; /*  12 for large monitor */
   font-size: 18px;
   color: black;
   border: none;
