@@ -53,7 +53,6 @@ export default {
   width: 100vw;
   height: 100vh;
   background-color: lightgrey;
-  /* border: 5px solid green; */
 }
 
 .home_page_img {
@@ -62,7 +61,6 @@ export default {
   height: 8rem;
   width: 33%;
   margin: 21.3rem 0 0 16.5rem;
-  /* border: 3px solid red; */
 }
 
 #logo {
@@ -101,7 +99,6 @@ label, input {
   width: 35%;
   height: auto;
   margin: 12rem 13rem 0 0;
-  /* border: 4px solid black; */
 }
 
 .login_card {
@@ -147,6 +144,5 @@ label, input {
   box-shadow: 5px 5px 5px gray;
   background: linear-gradient(to bottom right, #7BDCA1, #05CD54); 
 }
-
 
 </style>
