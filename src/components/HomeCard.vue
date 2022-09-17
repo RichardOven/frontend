@@ -145,4 +145,14 @@ label, input {
   background: linear-gradient(to bottom right, #7BDCA1, #05CD54); 
 }
 
+
+@media screen and (max-width: 1150px) {
+  
+}
+
+@media screen and (max-width: 520px) {
+  
+}
+
+
 </style>
