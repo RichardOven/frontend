@@ -8,7 +8,7 @@
     </div> 
   </nav>
     <div>
-        <form class = "signup_form">
+        <form class = "signup_form" @submit = "signIn">
           <label for ="firstName-input"></label>
             <input id = "signup_firstName" placeholder= "First Name" name = "firstName" type = "text"/> 
           <label for ="lastName-input"></label>
@@ -17,8 +17,13 @@
             <input id = "signup_email" placeholder= "Email" name = "email" type = "text"/>
           <label for = "password-input"></label>
             <input id = "signup_password" placeholder = "Password" name = "password" type = "text"/>
+          <router-link to = "/home">
+            <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
+          </router-link>
+          <p class="errorMessage">{{ errorMessage }}</p>
         </form>
-        <button id = "signup_btn_2" @click = "signIn" >Sign Up</button>
+        <!-- <button id = "signup_btn_2" v-on:click ='signIn'>Sign Up</button>
+        <p class="errorMessage">{{ errorMessage }}</p> -->
     </div>
 </template>
 
@@ -33,54 +38,54 @@
         lastName: '',
         email: '',
         password: '',
-        confirmedPassword: '',
+        validPassword: '',
         errorMessage: ''
       }
     }
   }
 
+  methods: {
+    signIn: () => {
+    let validEmail = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
+    let validPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"); // min 8 characters, one uppercase, one lowercase, one number
 
-//TODO: when this is not commented out, my page disappears on localhost 8080
-  // methods: {
-  //   signIn = function() {
-  //   let validEmail = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-  //   let validPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"); //min 8 characters, one uppercase, one lowercase, one number
 
-  //   if (!validEmail.test(email.value)) {
-  //     this.errorMessage = null;
-  //     email.style.border = '2px solid green';
-  //     validEmail = true;
-  //   } else if (validEmail.test(email.value) === false || email.value === '') {
-  //     this.errorMessage = 'Please enter a valid email address';
-  //     email.style.border = '2px solid red';
-  //     validEmail = false;
-  //   } if (!validPassword.test(password.value)) {
-  //     this.errorMessage = null;
-  //     password.style.border = '2px solid green';
-  //     validPassword = true;
-  //   } else if (validPassword.test(password.value) === false || password.value === '') {
-  //     this.errorMessage = 'Please enter a valid email address';
-  //     password.style.border = '2px solid red';
-  //     validPassword = false;
-  //   } else if (
-  //       this.username != "" &&
-  //       this.email != "" &&
-  //       this.password != "" &&
-  //       this.validPassword === this.password
-  //     ) {
-  //       this.$store
-  //       // create account
-  //       ({ })
-  //       .then(() => {
-  //         //check the store for the user, error - this email has already been used
-  //       });
-  //     } else if (this.validPassword != this.password) {
-  //       this.errorMessage = 'Both passwords must match'
-  //     } else {
-  //       this.errorMessage = 'All fields must be filled in'
-  //     }  
-  //   }
-  // } 
+    if (!validEmail.test(email.value)) {
+      this.errorMessage = null; // changed from this.errorMessage to data.errorMessage
+      email.style.border = '2px solid green';
+      validEmail = true;
+    } else if (validEmail.test(email.value) === false || email.value === '') {
+      data.errorMessage = 'Please enter a valid email address';
+      email.style.border = '2px solid red';
+      validEmail = false;
+    } if (!validPassword.test(password.value)) {
+      data.errorMessage = null;
+      password.style.border = '2px solid green';
+      validPassword = true;
+    } else if (validPassword.test(password.value) === false || password.value === '') {
+      data.errorMessage = 'Please enter a valid email address';
+      password.style.border = '2px solid red';
+      validPassword = false;
+    } else if (
+        this.firstName != "" &&
+        this.lastName != "" &&
+        this.email != "" &&
+        this.password != "" &&
+        this.validPassword === this.password
+      ) {
+        this.$store
+        // create account
+        ({ })
+        .then(() => {
+          //check the store for the user, error - this email has already been used
+        });
+      } else if (this.validPassword != this.password) {
+        data.errorMessage = 'Both passwords must match'
+      } else {
+        data.errorMessage = 'All fields must be filled in'
+      }  
+    }
+  } 
 
 </script>
     
@@ -139,9 +144,9 @@ form {
   font-style: normal;
   cursor: pointer;
   border-radius: 25px;
-  padding: 1rem;
+  padding: 0rem;
   width: 14rem;
-  margin: 4rem 0 0 31.2rem; /*  12 for large monitor */
+  margin: 4rem 0 0 12.5rem; /*  12 for large monitor */
   font-size: 18px;
   color: black;
   border: none;
