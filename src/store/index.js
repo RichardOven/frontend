@@ -1,10 +1,10 @@
-import { createStore } from 'vuex';
+// import { createStore } from 'vuex';
 // import router from "../router/index";
 
-const axios = require('axios');
-const instance = axios.create({
-  baseUrl: "http://localhost:3000/api",
-});
+// const axios = require('axios');
+// const instance = axios.create({
+//   baseUrl: "http://localhost:3000/api",
+// });
 
 // TODO: finish this
 
