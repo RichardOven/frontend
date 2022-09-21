@@ -2,11 +2,11 @@ const http = require('../http-common');
 
 class DataService {
     create(data) {
-        return http.post('/auth/signup', data)
+        return http.post('/users/signup', data)
     }
     
-    create(data) {
-        return http.post('/posts', data)
+    get(data) {
+        return http.get('/posts', data)
     }
 
 

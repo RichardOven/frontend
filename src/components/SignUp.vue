@@ -41,6 +41,15 @@
         validPassword: '',
         errorMessage: ''
       }
+    },
+    mounted () {
+    //api calling
+     axios
+      .post('http://localhost:3000/users/signup')
+      .then((res) => {
+        console.log(res);
+        this.signup = res.data;
+      })
     }
   }
 
@@ -85,8 +94,7 @@
         data.errorMessage = 'All fields must be filled in'
       }  
     }
-  } 
-
+  }
 </script>
     
     
