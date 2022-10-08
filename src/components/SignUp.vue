@@ -17,7 +17,7 @@
             <input id = "signup_email" placeholder= "Email" name = "email" type = "text"/>
           <label for = "password-input"></label>
             <input id = "signup_password" placeholder = "Password" name = "password" type = "text"/>
-          <router-link to = "/home">
+          <router-link to = "/">
             <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
           </router-link>
           <p class="errorMessage">{{ errorMessage }}</p>
@@ -154,7 +154,7 @@ form {
   border-radius: 25px;
   padding: 0rem;
   width: 14rem;
-  margin: 4rem 0 0 12.5rem; /*  12 for large monitor */
+  margin: 4rem 0 0 15rem; /*  12 for large monitor */
   font-size: 18px;
   color: black;
   border: none;

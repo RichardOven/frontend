@@ -1,16 +1,19 @@
 <template>
     <p>This is where the main feed of posts will be</p>
     <div v-for="post of posts">
-        <p><strong>{{post.title}}</strong></p>>
-        <p>{{post.author}}</p>
-        <p>{{post.posttext}}</p>
-        <p>{{post.creationdate}}</p>
-       
+        <div class = "postCard">
+            <p><strong>{{post.title}}</strong></p>>
+            <p>{{post.author}}</p>
+            <p>{{post.posttext}}</p>
+            <p>{{post.creationdate}}</p>  
+        </div>
     </div>
 </template>
 
+
 <script>
     import axios from 'axios'
+    
     export default {
         data(){
             return {
