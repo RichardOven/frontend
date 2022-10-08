@@ -8,22 +8,20 @@
     </div> 
   </nav>
     <div>
-        <form class = "signup_form" @submit = "signIn">
-          <label for ="firstName-input"></label>
-            <input id = "signup_firstName" placeholder= "First Name" name = "firstName" type = "text"/> 
-          <label for ="lastName-input"></label>
-            <input id = "signup_lastName" placeholder= "Last Name" name = "lastName" type = "text"/>
-          <label for ="email-input"></label>
-            <input id = "signup_email" placeholder= "Email" name = "email" type = "text"/>
-          <label for = "password-input"></label>
-            <input id = "signup_password" placeholder = "Password" name = "password" type = "text"/>
-          <router-link to = "/">
-            <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
-          </router-link>
-          <p class="errorMessage">{{ errorMessage }}</p>
-        </form>
-        <!-- <button id = "signup_btn_2" v-on:click ='signIn'>Sign Up</button>
-        <p class="errorMessage">{{ errorMessage }}</p> -->
+      <form class = "signup_form" @submit = "signIn">
+        <label for ="firstName-input"></label>
+          <input id = "signup_firstName" placeholder= "First Name" name = "firstName" type = "text"/> 
+        <label for ="lastName-input"></label>
+          <input id = "signup_lastName" placeholder= "Last Name" name = "lastName" type = "text"/>
+        <label for ="email-input"></label>
+          <input id = "signup_email" placeholder= "Email" name = "email" type = "text"/>
+        <label for = "password-input"></label>
+          <input id = "signup_password" placeholder = "Password" name = "password" type = "text"/>
+        <router-link to = "/">
+          <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
+        </router-link>
+        <p class="errorMessage">{{ errorMessage }}</p>
+      </form>
     </div>
 </template>
 
