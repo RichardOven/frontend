@@ -1,5 +1,5 @@
 <template>
-  <HomeCard />
+  <LoginCard />
   <router-view />
 </template>
 
@@ -7,13 +7,13 @@
 
 <script>
 
-import HomeCard from '../components/HomeCard.vue';
+import LoginCard from '../components/LoginCard.vue';
 
 
 export default {
-  name: 'HomeCard',
+  name: 'LoginCard',
   components: {
-    HomeCard
+    LoginCard
   }
 }
 

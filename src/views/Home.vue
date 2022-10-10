@@ -1,4 +1,5 @@
 <template>
+  <div>
     <nav>
     <router-link to = "/">
       <i class="fas fa-arrow-left" id="home_arrow"></i>
@@ -8,10 +9,14 @@
     </div> 
   </nav>
     <PostCard />
+  </div> 
 </template>
 
 
 <script>
+// get all posts
+
+
 import PostCard from '@/components/PostCard.vue';
   
     
