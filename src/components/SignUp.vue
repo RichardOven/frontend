@@ -79,14 +79,8 @@
         this.email != "" &&
         this.password != "" &&
         this.validPassword === this.password
-      ) {
-        this.$store
-        // create account
-        ({ })
-        .then(() => {
-          //check the store for the user, error - this email has already been used
-        });
-      } else if (this.validPassword != this.password) {
+      )
+      if (this.validPassword != this.password) {
         data.errorMessage = 'Both passwords must match'
       } else {
         data.errorMessage = 'All fields must be filled in'

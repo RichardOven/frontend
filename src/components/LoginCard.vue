@@ -5,17 +5,18 @@
     </div> 
     <div class = "login_section">
       <div class = "login_card">
-        <form class = "login_form">
+        <form class = "login_form" @submit.prevent = "login">
           <label for ="email-input"></label>
-            <input id = "email" placeholder="email" name = "email" type = "text"/>
+            <input id = "email" placeholder="email" name = "email" type = "text" v-model = "email" required/>
           <label for = "password-input"></label>
-          <input id = "password" placeholder = "password" name = "password" type = "text"/>
+          <input id = "password" placeholder = "password" name = "password" type = "text" v-model = "password" required/>
+          <!-- <p class="errorMessage">{{ errorMessage }}</p> -->
         </form>
           <router-link to ="/home">
-            <button id = "login_btn">Log In</button>
+            <button type = "submit" id = "login_btn">Log In</button>
           </router-link>
           <router-link to ='/signup'>
-            <button id = "signup_btn">Create new account</button>
+            <button type = "submit" id = "signup_btn">Create new account</button>
           </router-link>
       </div>
     </div>
@@ -27,10 +28,43 @@
 
 
 <script>
-
+// working on getting any kind of form validation working 
 export default {
-  name: 'LoginCard'
+  name: 'LoginCard',
+  data: function () {
+    return {
+      email: "",
+      password: "",
+      errorMessage: ""
+    }
+  }
 }
+methods: {
+  login: () => {
+    let emailRegExp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+    let passwordRegExp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"; // min 8 characters, one uppercase, one lowercase, one number 
+
+    let validEmail = false;
+    let validPassword = false;
+
+
+
+
+
+
+
+
+
+  }
+}
+  
+      
+      
+
+ 
+
+
+
 
 
 
