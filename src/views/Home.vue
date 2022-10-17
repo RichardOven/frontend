@@ -1,53 +1,38 @@
 <template>
   <div>
-    <nav>
-    <router-link to = "/">
-      <i class="fas fa-arrow-left" id="home_arrow"></i>
+    <HeaderLogo />
+    <router-link to ="/addpost">
+      <button class="btn btn-primary btn-med text-strong" id="btn_addPost" role="button">Add Post</button>
     </router-link>
-    <div class = "signup_page_img">
-      <img id = "black-logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg" />
-    </div> 
-  </nav>
+    <RouterLink to="/profile">
+      <button class="btn btn-secondary btn-med text-strong" id ="btn_profile" role="button">Profile</button>
+    </RouterLink>
     <PostCard />
+    <RouterView />
   </div> 
 </template>
 
-
 <script>
-// get all posts
-
 
 import PostCard from '@/components/PostCard.vue';
-  
+import HeaderLogo from '../components/HeaderLogo.vue'
     
 export default {
     name: 'Home', 
-    components: { 
-        PostCard 
-    }
+    components: {
+    PostCard,
+    HeaderLogo
+}
 }
 
 </script>
 
+
 <style scoped>
-
-nav {
-  display: flex;
+#btn_addPost {
+  margin: 5rem
 }
 
-i {
-  font-size: 1.5rem;
-  padding: .5rem;
-  color: black;
-  margin: 1.75rem 0 0 1.5rem;
-}
-
-#black-logo {
-  margin: 1rem 0 0 3rem;
-  padding: 0;
-  width: auto;
-  height: 4rem;
-}
 
 
 </style>

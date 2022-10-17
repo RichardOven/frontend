@@ -1,92 +1,53 @@
 <template>
-  <nav>
-    <router-link to = "/">
-      <i class="fas fa-arrow-left" id="home_arrow"></i>
-    </router-link>
-    <div class = "signup_page_img">
-      <img id = "black-logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg" />
-    </div> 
-  </nav>
-    <div>
-      <form class = "signup_form" @submit = "signIn">
-        <label for ="firstName-input"></label>
-          <input id = "signup_firstName" placeholder= "First Name" name = "firstName" type = "text"/> 
-        <label for ="lastName-input"></label>
-          <input id = "signup_lastName" placeholder= "Last Name" name = "lastName" type = "text"/>
-        <label for ="email-input"></label>
-          <input id = "signup_email" placeholder= "Email" name = "email" type = "text"/>
-        <label for = "password-input"></label>
-          <input id = "signup_password" placeholder = "Password" name = "password" type = "text"/>
+  <div>
+    <header-logo/>
+    <div class="col-md-4">
+      <form class ="signup_form">
+        <label for ="firstName-input" class = "form-label"></label>
+          <input type="text" class="form-control" id = "signup_firstName" placeholder="First Name" value ="" required/> 
+        <label for ="lastName-input" class = "form-label"></label>
+          <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" name ="lastName" required />
+        <label for ="email-input" class = "form-label"></label>
+          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" name = "email" required />
+        <label for = "password-input" class = "form-label"></label>
+          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" name = "password" required/>
         <router-link to = "/">
           <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
         </router-link>
         <p class="errorMessage">{{ errorMessage }}</p>
       </form>
     </div>
+  </div>
 </template>
 
 
 <script>
+import HeaderLogo from './HeaderLogo.vue';
 
-  export default {
-    name: 'SignUp',
-    data: function() {
-      return {
-        firstName: '',
-        lastName: '',
-        email: '',
-        password: '',
-        validPassword: '',
-        errorMessage: ''
-      }
+export default {
+    name: "SignUp",
+    data: function () {
+        return {
+            firstName: "",
+            lastName: "",
+            email: "",
+            password: "",
+            validPassword: "",
+            errorMessage: ""
+        };
     },
-    mounted () {
-    //api calling
-     axios
-      .post('http://localhost:3000/users/signup')
-      .then((res) => {
-        console.log(res);
-        this.signup = res.data;
-      })
-    }
-  }
+    mounted() {
+        //api calling
+        axios
+            .post("http://localhost:3000/users/signup")
+            .then((res) => {
+            console.log(res);
+            this.signup = res.data;
+        });
+    },
+    components: { HeaderLogo }
+}
 
-  methods: {
-    signIn: () => {
-    let validEmail = new RegExp(/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i);
-    let validPassword = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"); // min 8 characters, one uppercase, one lowercase, one number
-
-
-    if (!validEmail.test(email.value)) {
-      this.errorMessage = null; // changed from this.errorMessage to data.errorMessage
-      email.style.border = '2px solid green';
-      validEmail = true;
-    } else if (validEmail.test(email.value) === false || email.value === '') {
-      data.errorMessage = 'Please enter a valid email address';
-      email.style.border = '2px solid red';
-      validEmail = false;
-    } if (!validPassword.test(password.value)) {
-      data.errorMessage = null;
-      password.style.border = '2px solid green';
-      validPassword = true;
-    } else if (validPassword.test(password.value) === false || password.value === '') {
-      data.errorMessage = 'Please enter a valid email address';
-      password.style.border = '2px solid red';
-      validPassword = false;
-    } else if (
-        this.firstName != "" &&
-        this.lastName != "" &&
-        this.email != "" &&
-        this.password != "" &&
-        this.validPassword === this.password
-      )
-      if (this.validPassword != this.password) {
-        data.errorMessage = 'Both passwords must match'
-      } else {
-        data.errorMessage = 'All fields must be filled in'
-      }  
-    }
-  }
 </script>
     
     
@@ -98,55 +59,29 @@
   margin: 0;
 }
 
-nav {
-  display: flex;
-}
-
-i {
-  font-size: 1.5rem;
-  padding: .5rem;
-  color: black;
-  margin: 2.2rem 0 0 2rem;
-}
-
-#black-logo {
-  margin: 2rem 0 0 2rem;
-  padding: 0;
-  width: auto;
-  height: 3rem;
-}
-
 label, input {
   padding: .5rem;
-  box-sizing: border-box;
   text-align: center;
-  font-weight: 400;
+  font-weight: 500;
   font-size: medium;
-  height: 2.7rem;
 }
 
 form {
   display: flex;
   flex-direction: column;
-  width: 45%;
+  width: 100%;
   margin: 6rem 0 0 16rem;
 }
 
-#signup_firstName,
-#signup_lastName,
-#signup_email,
-#signup_password {
-  border: .125rem solid black;
-}
 
 #signup_btn_2 {
   font-weight: bold;
   font-style: normal;
   cursor: pointer;
   border-radius: 25px;
-  padding: 0rem;
+  padding: .5rem;
   width: 14rem;
-  margin: 4rem 0 0 15rem; /*  12 for large monitor */
+  margin: 4rem 0 0 9.7rem; /*  12 for large monitor */
   font-size: 18px;
   color: black;
   border: none;

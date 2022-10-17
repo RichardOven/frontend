@@ -1,20 +1,23 @@
 <template>
-    <PostCard />
+    <HeaderLogo />
+    <RouterLink to="/home">
+      <button class="btn btn-primary btn-med" role="button">Home</button>
+    </RouterLink>
     <RouterView />
 </template>
 
 
 <script>
 // get posts with selected user id
-// get comments attached to those posts
-// if you are the user, delete posts
+// if you are the user, ability to delete posts
+// ability to delete user 
 
-import PostCard from '@/components/PostCard.vue';
+import HeaderLogo from '@/components/HeaderLogo.vue';
 
 export default {
   name: 'Profile',
   components: {
-    PostCard
+    HeaderLogo
   }
 }
 

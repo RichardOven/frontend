@@ -4,23 +4,23 @@
       <img id = "logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg" />
     </div> 
     <div class = "login_section">
-      <div class = "login_card">
-        <form class = "login_form" @submit.prevent = "login">
-          <label for ="email-input"></label>
-            <input id = "email" placeholder="email" name = "email" type = "text" v-model = "email" required/>
-          <label for = "password-input"></label>
-          <input id = "password" placeholder = "password" name = "password" type = "text" v-model = "password" required/>
+      <div class="col-md-4" id = "login_card">
+        <form class = "login_form" id = "login_form">
+          <label for ="email-input" class = "form-label"></label>
+            <input type= "text" class="form-control" id = "email" placeholder="Email" name ="email" required/>
+          <label for = "password-input" class = "form-label"></label>
+            <input type="text" class="form-control" id = "password" placeholder ="Password" name ="password" required/>
           <!-- <p class="errorMessage">{{ errorMessage }}</p> -->
         </form>
           <router-link to ="/home">
-            <button type = "submit" id = "login_btn">Log In</button>
+            <button type = "submit"  id = "login_btn">Log In</button>
           </router-link>
           <router-link to ='/signup'>
             <button type = "submit" id = "signup_btn">Create new account</button>
           </router-link>
       </div>
     </div>
-    
+  
   </div>
  
 </template>
@@ -28,41 +28,6 @@
 
 
 <script>
-// working on getting any kind of form validation working 
-export default {
-  name: 'LoginCard',
-  data: function () {
-    return {
-      email: "",
-      password: "",
-      errorMessage: ""
-    }
-  }
-}
-methods: {
-  login: () => {
-    let emailRegExp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-    let passwordRegExp = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$"; // min 8 characters, one uppercase, one lowercase, one number 
-
-    let validEmail = false;
-    let validPassword = false;
-
-
-
-
-
-
-
-
-
-  }
-}
-  
-      
-      
-
- 
-
 
 
 
@@ -115,16 +80,16 @@ label, input {
   font-size: medium;
 }
 
-#email {
+/* #email {
   height: 2.7rem;
   border-radius: 20px;
-}
+} */
 
-#password {
+/* #password {
   height: 2.7rem;
   border-radius: 20px;
   margin-top: 2rem;
-}
+} */
 
 
 .login_section {
@@ -135,12 +100,11 @@ label, input {
   margin: 12rem 13rem 0 0;
 }
 
-.login_card {
+#login_card {
   background-color: #FBF9F9;
-  border-radius: 15px;
   padding: 5px;
   width: 100%;
-  height: 25rem;
+  height: 24rem;
   margin-bottom: 10px;
   box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.867);
 }
@@ -148,7 +112,7 @@ label, input {
 #login_btn {
   font-weight: bold;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 1rem;
   width: 17rem;
   margin: 3rem 0 0 8.5rem;
@@ -168,7 +132,7 @@ label, input {
   font-weight: bold;
   font-style: normal;
   cursor: pointer;
-  border-radius: 25px;
+  border-radius: 20px;
   padding: 1rem;
   width: 17rem;
   margin: 2.2rem 0 0 8.5rem; /*  12 for large monitor */

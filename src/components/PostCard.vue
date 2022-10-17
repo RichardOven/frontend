@@ -5,7 +5,7 @@
             <h5 class="card-subtitle mb-2 text-strong">{{ post.author }}</h5>
             <p class="card-text">{{ post.posttext }}</p>
             <p class="card-subtitle text-muted">{{ post.creationdate }}</p>
-            <button type="button" class="comment-btn bg-primary text-white">comment</button>
+            <!-- <button type="button" class="comment-btn bg-primary text-white">add comment</button> -->
         </div>
     </div>
 </template>
@@ -18,7 +18,8 @@ export default {
     name: "PostCard",
     data() {
         return {
-            posts: []
+            posts: [],
+            
         }
     },
 
@@ -40,12 +41,6 @@ export default {
         }
     }
 }
-
-
-
-// export default {
-//   name: 'PostCard'
-// }
 </script>
 
 
