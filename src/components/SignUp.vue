@@ -8,13 +8,13 @@
         <label for ="lastName-input" class = "form-label"></label>
           <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" maxlength = "20" v-model="lastName" required />
         <label for ="email-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" v-on:blur="emailValidation()" v-model="email" required />
+          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" minlength="10" v-on:blur="emailValidation()" v-model="email" required />
           <p v-show="passConditions.email">Not a valid email!</p>
         <label for = "password-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" v-on:blur="passwordValidation()" v-model="password" required/>
+          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" minlength="8" v-on:blur="passwordValidation()" v-model="password" required/>
           <p v-show="passConditions.password">Not a valid password!</p>
         <router-link to = "/">
-          <input type="submit" id = "signup_btn_2" v-on:click.preventDefault ="SignUp()" value = "Sign Up"/>
+          <input type="submit" id = "signup_btn_2" v-on:click ="SignUp()" value = "Sign Up"/>
         </router-link>
       </form>
     </div>
@@ -79,21 +79,21 @@ export default {
         },
         body: JSON.stringify(signUpForm),
       };
-    fetch("http://localhost:3000/api/users/signup", requestOptions)
-      .then((response) => {
-      return response
-        .json()
-        .then((data) => {
-        console.log(data);
-        if (response.ok) {
-          this.$router.push("/");
-        }
+      fetch("http://localhost:3000/api/users/signup", requestOptions)
+        .then((response) => {
+        return response
+          .json()
+          .then((data) => {
+          console.log(data);
+          if (response.ok) {
+            this.$router.push("/");
+          }
         });
       })
       .catch((error) => {
       console.error("There was an error!", error);
       });
-    },
+    }
   },
 
   mounted() {
