@@ -15,10 +15,26 @@
 import HeaderLogo from '@/components/HeaderLogo.vue';
 
 export default {
-  name: 'Profile',
-  components: {
-    HeaderLogo
-  }
+    name: 'Profile',
+    components: {
+      HeaderLogo
+    },
+
+    mounted() {
+        //api calling
+        axios
+            .get("http://localhost:3000/users/:id")
+            .then((res) => {
+            console.log(res);
+            this.profile = res.data;
+        });
+        axios
+            .get("http://localhost:3000/posts/:id")
+            .then((res) => {
+            console.log(res);
+            this.profile = res.data;
+        });
+    },
 }
 
 </script>

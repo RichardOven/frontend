@@ -4,6 +4,9 @@
             <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
             <h5 class="card-subtitle mb-2 text-strong">{{ post.author }}</h5>
             <p class="card-text">{{ post.posttext }}</p>
+                <div class="card-img">
+                    <img v-if="file" @change="getImage()" class="image" :src="fileSource" />
+                </div>
             <p class="card-subtitle text-muted">{{ post.creationdate }}</p>
             <!-- <button type="button" class="comment-btn bg-primary text-white">add comment</button> -->
         </div>
@@ -28,6 +31,11 @@ export default {
     },
 
     methods: {
+        getImage() {
+            this.file = this.$refs.file.files[0];
+            this.fileSource = URL.createObjectURL(this.$refs.file.files[0]);
+        },
+
         fetchPosts() {
             axios
                 .get('http://localhost:3000/api/posts/')
