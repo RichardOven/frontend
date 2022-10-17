@@ -4,17 +4,18 @@
     <div class="col-md-4">
       <form class ="signup_form">
         <label for ="firstName-input" class = "form-label"></label>
-          <input type="text" class="form-control" id = "signup_firstName" placeholder="First Name" value ="" required/> 
+          <input type="text" class="form-control" id = "signup_firstName" placeholder="First Name" maxlength="15" v-model="firstName" required/> 
         <label for ="lastName-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" name ="lastName" required />
+          <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" maxlength = "20" v-model="lastName" required />
         <label for ="email-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" name = "email" required />
+          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" v-on:blur="emailValidation()" v-model="email" required />
+          <p v-show="passConditions.email">Not a valid email!</p>
         <label for = "password-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" name = "password" required/>
+          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" v-on:blur="passwordValidation()" v-model="password" required/>
+          <p v-show="passConditions.password">Not a valid password!</p>
         <router-link to = "/">
-          <input type="submit" id = "signup_btn_2" value = "Sign Up"/>
+          <input type="submit" id = "signup_btn_2" v-on:click.preventDefault ="SignUp()" value = "Sign Up"/>
         </router-link>
-        <p class="errorMessage">{{ errorMessage }}</p>
       </form>
     </div>
   </div>
@@ -25,27 +26,89 @@
 import HeaderLogo from './HeaderLogo.vue';
 
 export default {
-    name: "SignUp",
-    data: function () {
-        return {
-            firstName: "",
-            lastName: "",
-            email: "",
-            password: "",
-            validPassword: "",
-            errorMessage: ""
-        };
+  name: "SignUp",
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      email: "",
+      password: "",
+      passConditions: {
+        email: false,
+        password: false
+      }
+    };
+  },
+
+  watch: {
+    password() {
+      this.passwordValidation()
     },
-    mounted() {
-        //api calling
-        axios
-            .post("http://localhost:3000/users/signup")
-            .then((res) => {
-            console.log(res);
-            this.signup = res.data;
+    email() {
+      this.emailValidation()
+    }
+  },
+
+  methods: {
+    passwordValidation() {
+      if ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$".test(this.password)) {
+        this.passConditions.password = true 
+      } else {
+        this.passConditions.password = false
+      }
+      //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
+    },
+    emailValidation() {
+      if ('[a-z0-9]+@[a-z]+\.[a-z]{2,3}'.test(this.email)) {
+        this.passConditions.email = true 
+      } else {
+        this.passConditions.email = false
+      }
+    },
+    SignUp() {
+      const signUpForm = {
+        firstName: this.firstName,
+        lastName: this.lastName,
+        email: this.email,
+        password: this.password
+      }
+      const requestOptions = {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signUpForm),
+      };
+    fetch("http://localhost:3000/api/users/signup", requestOptions)
+      .then((response) => {
+      return response
+        .json()
+        .then((data) => {
+        console.log(data);
+        if (response.ok) {
+          this.$router.push("/");
+        }
         });
+      })
+      .catch((error) => {
+      console.error("There was an error!", error);
+      });
     },
-    components: { HeaderLogo }
+  },
+
+  mounted() {
+      //api calling
+      axios
+          .post("http://localhost:3000/users/signup")
+          .then((res) => {
+          console.log(res);
+          this.signup = res.data;
+      });
+  },
+  
+  components: { 
+    HeaderLogo
+  }
 }
 
 </script>
