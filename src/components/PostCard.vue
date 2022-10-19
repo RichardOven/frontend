@@ -2,7 +2,7 @@
     <div v-for="post in posts" :key="post.postid" class="card" style="width:45%;">
         <div class="card-body">
             <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
-            <h5 class="card-subtitle mb-2 text-strong">{{ post.author }}</h5>
+            <h5 class="card-subtitle mb-2 text-strong">posted by {{ post.author }}</h5>
             <p class="card-text">{{ post.posttext }}</p>
                 <div class="card-img">
                     <img v-if="file" @change="getImage()" class="image" :src="fileSource" />

@@ -51,7 +51,7 @@ export default {
                 requestOptions = {
                     method: "POST",
                     headers: {
-                    Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+                      "Content-Type": "application/json",
                     },
                     body: addPostForm,
                 };
@@ -64,8 +64,7 @@ export default {
             requestOptions = {
                 method: "POST",
                 headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify(addPostForm),
             }
@@ -77,7 +76,7 @@ export default {
                 .then((data) => {
                     console.log(data);
                         if (response.ok) {
-                            this.$router.push("/home");
+                            this.$router.push("/addPost");
                         }
                 });
             })
@@ -89,12 +88,16 @@ export default {
     mounted() {
       //api calling
       axios
-          .post("http://localhost:3000/posts/")
+          .post("http://localhost:3000/api/posts/")
           .then((res) => {
           console.log(res);
           this.addpost = res.data;
       });
   },
+
+  created: function () {
+        this.sendPost()
+    },
 }
 
 </script>

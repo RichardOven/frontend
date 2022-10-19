@@ -23,13 +23,13 @@ export default {
     mounted() {
         //api calling
         axios
-            .get("http://localhost:3000/users/:id")
+            .get("http://localhost:3000/api/users/:id")
             .then((res) => {
             console.log(res);
             this.profile = res.data;
         });
         axios
-            .get("http://localhost:3000/posts/:id")
+            .get("http://localhost:3000/api/posts/:id")
             .then((res) => {
             console.log(res);
             this.profile = res.data;

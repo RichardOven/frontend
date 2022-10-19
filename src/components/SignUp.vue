@@ -8,9 +8,9 @@
         <label for ="lastName-input" class = "form-label"></label>
           <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" maxlength = "20" v-model="lastName" required />
         <label for ="email-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" minlength="10" v-on:blur="emailValidation()" v-model="email" required />
+          <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" minlength="10" v-on:change="emailValidation()" v-model="email" required />
         <label for = "password-input" class = "form-label"></label>
-          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" minlength="8" v-on:blur="passwordValidation()" v-model="password" required/>
+          <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" minlength="8" v-on:change="passwordValidation()" v-model="password" required/>
         <router-link to = "/">
           <input type="submit" id = "signup_btn_2" v-on:click ="SignUp()" value = "Sign Up"/>
         </router-link>
@@ -32,8 +32,8 @@ export default {
       email: "",
       password: "",
       passConditions: {
-        validEmail: false,
-        validPassword: false
+        email: false,
+        password: false
       }
     };
   },
@@ -51,20 +51,23 @@ export default {
   methods: {
     
     passwordValidation() {
+      let password = this.password;
       let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      if (passwordRegEx.test('password.value')) {
-        validPassword = true 
+      if (passwordRegEx.test(password.valueOf)) {
+        this.passConditions.password = true 
       } else {
-        validPassword = false
+        this.passConditions.password = false
       }
       //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
     },
+    
     emailValidation() {
+      let email = this.email;
       let emailRegEx = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-      if (emailRegEx.test('email.value')) {
-        validEmail = true 
+      if (emailRegEx.test(email.valueOf)) {
+        this.passConditions.email = true 
       } else {
-        validEmail = false
+        this.passConditions.email = false
       }
     },
     SignUp() {
@@ -81,7 +84,8 @@ export default {
         },
         body: JSON.stringify(signUpForm),
       };
-      fetch("http://localhost:3000/api/users/signup", requestOptions)
+      if (this.passConditions.password === true && this.passConditions.email === true) {
+        fetch("http://localhost:3000/api/users/signup", requestOptions)
         .then((response) => {
         return response
           .json()
@@ -96,12 +100,14 @@ export default {
       console.error("There was an error!", error);
       });
     }
-  },
+  }
+},
+      
 
   mounted() {
       //api calling
       axios
-          .post("http://localhost:3000/users/signup")
+          .post("http://localhost:3000/api/users/signup")
           .then((res) => {
           console.log(res);
           this.signup = res.data;
