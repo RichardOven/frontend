@@ -9,10 +9,8 @@
           <input type = "text" class="form-control" id = "signup_lastName" placeholder="Last Name" maxlength = "20" v-model="lastName" required />
         <label for ="email-input" class = "form-label"></label>
           <input type = "text" class="form-control" id = "signup_email" placeholder= "Email" minlength="10" v-on:blur="emailValidation()" v-model="email" required />
-          <p v-show="passConditions.email">Not a valid email!</p>
         <label for = "password-input" class = "form-label"></label>
           <input type = "text" class="form-control" id = "signup_password" placeholder = "Password" minlength="8" v-on:blur="passwordValidation()" v-model="password" required/>
-          <p v-show="passConditions.password">Not a valid password!</p>
         <router-link to = "/">
           <input type="submit" id = "signup_btn_2" v-on:click ="SignUp()" value = "Sign Up"/>
         </router-link>
@@ -34,8 +32,8 @@ export default {
       email: "",
       password: "",
       passConditions: {
-        email: false,
-        password: false
+        validEmail: false,
+        validPassword: false
       }
     };
   },
@@ -49,20 +47,24 @@ export default {
     }
   },
 
+ 
   methods: {
+    
     passwordValidation() {
-      if ("^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$".test(this.password)) {
-        this.passConditions.password = true 
+      let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      if (passwordRegEx.test(password.value)) {
+        validPassword = true 
       } else {
-        this.passConditions.password = false
+        validPassword = false
       }
       //Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character
     },
     emailValidation() {
-      if ('[a-z0-9]+@[a-z]+\.[a-z]{2,3}'.test(this.email)) {
-        this.passConditions.email = true 
+      let emailRegEx = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
+      if (emailRegEx.test(email.value)) {
+        validEmail = true 
       } else {
-        this.passConditions.email = false
+        validEmail = false
       }
     },
     SignUp() {
