@@ -53,7 +53,7 @@ export default {
     passwordValidation() {
       let password = this.password;
       let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-      if (passwordRegEx.test(password.valueOf)) {
+      if (passwordRegEx.test(password)) {
         this.passConditions.password = true 
       } else {
         this.passConditions.password = false
@@ -64,7 +64,7 @@ export default {
     emailValidation() {
       let email = this.email;
       let emailRegEx = /[a-z0-9]+@[a-z]+\.[a-z]{2,3}/;
-      if (emailRegEx.test(email.valueOf)) {
+      if (emailRegEx.test(email)) {
         this.passConditions.email = true 
       } else {
         this.passConditions.email = false

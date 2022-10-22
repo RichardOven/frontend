@@ -1,7 +1,7 @@
 <template>
     <HeaderLogo />
     <RouterLink to="/home">
-      <button class="btn btn-primary btn-med" role="button">Home</button>
+      <button class="btn btn-primary btn-med" id="home_btn" role="button"><strong>Home</strong></button>
     </RouterLink>
     <RouterView />
 </template>
@@ -42,7 +42,9 @@ export default {
 
 
 <style scoped>
-
+#home_btn {
+  margin: 3rem 0 0 8rem;
+}
 
 
 </style>

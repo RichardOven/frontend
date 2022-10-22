@@ -55,13 +55,13 @@ export default {
 <style scoped>
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 .card {
-    margin: 5rem 5rem 0 25rem
+    margin: 5rem 5rem 0 26rem
 }
 
 .card-body {

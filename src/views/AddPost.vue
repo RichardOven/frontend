@@ -1,11 +1,14 @@
 <template>
     <div>
       <header-logo/>
+      <RouterLink to="/home">
+        <button class="btn btn-primary btn-med" id="home_btn" role="button"><strong>Home</strong></button>
+      </RouterLink>
       <div class="col-md-4">
         <h2 class="addPost_header"><strong>Create a Post</strong></h2>
         <form class ="addpost_form">
           <label for ="firstName-input" class = "form-label"></label>
-            <input type="text" class="form-control" id = "firstName" placeholder="Name" maxlength="15" v-model="firstName" required/>
+            <input type="text" class="form-control" id = "author" placeholder="Name" maxlength="15" v-model="author" required/>
           <label for ="title-input" class = "form-label"></label>
             <input type="text" class="form-control" id = "title" placeholder="Title" minlength="3" v-model="title" required/>
           <label for ="postText-input" class = "form-label"></label>
@@ -39,7 +42,7 @@ export default {
         
             if(this.file != null) {
                 post = JSON.stringify({
-                name: this.name,
+                author: this.author,
                 title: this.title,
                 postText: this.postText
                 });
@@ -57,7 +60,7 @@ export default {
                 };
             } else {
             addPostForm = {
-                name: this.name,
+                author: this.author,
                 title: this.title,
                 postText: this.postText,
             }
@@ -132,6 +135,12 @@ form {
     color: blue;
 }
 
+#home_btn {
+  margin: 3rem 0 0 12rem;
+  padding: .5rem;
+  width: 6rem;
+}
+
 
 #create_post_btn {
   font-weight: bold;
@@ -142,10 +151,10 @@ form {
   width: 14rem;
   margin: 4rem 0 0 9.7rem; /*  12 for large monitor */
   font-size: 18px;
-  color: black;
+  color: white;
   border: none;
   box-shadow: 5px 5px 5px gray;
-  background: linear-gradient(to bottom right, #8521dd, #be5deb); 
+  background: linear-gradient(to bottom right, #061aec, #6b56f4); 
 }
 
 
