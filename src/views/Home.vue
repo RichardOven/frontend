@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class>
     <HeaderLogo />
     <router-link to ="/addpost">
       <button class="btn btn-primary btn-med text-strong" id="btn_addPost" role="button"><strong>Add Post</strong></button>
@@ -29,6 +29,7 @@ export default {
 
 
 <style scoped>
+
 #btn_addPost {
   margin: 5rem 0 0 8rem;
 }

@@ -52,9 +52,12 @@ export default {
     
     passwordValidation() {
       let password = this.password;
+      // console.log(password)
       let passwordRegEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+      // console.log(passwordRegEx.test(password))
       if (passwordRegEx.test(password)) {
         this.passConditions.password = true 
+        // console.log(this.passConditions)
       } else {
         this.passConditions.password = false
       }
@@ -77,6 +80,7 @@ export default {
         email: this.email,
         password: this.password
       }
+      // console.log(signUpForm)
       const requestOptions = {
         method: "POST",
         headers: {
@@ -84,35 +88,25 @@ export default {
         },
         body: JSON.stringify(signUpForm),
       };
-      if (this.passConditions.password === true && this.passConditions.email === true) {
+      if (this.passConditions.password && this.passConditions.email === true) {
+        // console.log(true)
         fetch("http://localhost:3000/api/users/signup", requestOptions)
         .then((response) => {
-        return response
-          .json()
-          .then((data) => {
+          return response.json();
+        })
+        .then((data) => {
           console.log(data);
           if (response.ok) {
             this.$router.push("/");
           }
-        });
-      })
-      .catch((error) => {
-      console.error("There was an error!", error);
-      });
+        })
+        .catch((error) => {
+          error: error;
+        })
+      }
     }
-  }
-},
-      
-
-  mounted() {
-      //api calling
-      axios
-          .post("http://localhost:3000/api/users/signup")
-          .then((res) => {
-          console.log(res);
-          this.signup = res.data;
-      });
   },
+  
   
   components: { 
     HeaderLogo

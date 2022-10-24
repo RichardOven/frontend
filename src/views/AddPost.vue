@@ -84,7 +84,7 @@ export default {
                 });
             })
             .catch((error) => {
-            console.error("There was an error!", error);
+              error: error
             })
         }
     },

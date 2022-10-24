@@ -44,6 +44,7 @@ export default {
 <style scoped>
 #home_btn {
   margin: 3rem 0 0 8rem;
+  font-size: 18px;
 }
 
 

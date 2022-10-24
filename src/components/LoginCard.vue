@@ -13,10 +13,10 @@
           <!-- <p class="errorMessage">{{ errorMessage }}</p> -->
         </form>
           <router-link to ="/home">
-            <button type = "submit"  id = "login_btn">Log In</button>
+            <button type = "submit" v-on:click ="LogIn()" id = "login_btn">Log In</button>
           </router-link>
           <router-link to ='/signup'>
-            <button type = "submit" id = "signup_btn">Create new account</button>
+            <button type = "submit"  id = "signup_btn">Create new account</button>
           </router-link>
       </div>
     </div>
@@ -29,55 +29,55 @@
 
 <script>
 
-
+// need to add validation
 
 
 
 </script>
 
 
-<style>
+<style scoped>
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 .home {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-  width: 100vw;
-  height: 100vh;
-  background-color: lightgrey;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightgrey;
 }
 
 .home_page_img {
-  display: inline-block;
-  justify-content: start;
-  height: 8rem;
-  width: 33%;
-  margin: 21.3rem 0 0 16.5rem;
+    display: inline-block;
+    justify-content: start;
+    height: 8rem;
+    width: 33%;
+    margin: 21.3rem 0 0 16.5rem;
 }
 
 #logo {
-  height: 5rem;
+    height: 5rem;
 }
 
 .login_form {
-  display: flex;
-  flex-direction: column;
-  margin: 1rem 4rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 4rem 0 4rem;
 }
 
 label, input {
-  padding: .5rem;
-  box-sizing: border-box;
-  text-align: center;
-  font-weight: 400;
-  font-size: medium;
+    padding: .5rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 400;
+    font-size: medium;
 }
 
 /* #email {
@@ -93,20 +93,20 @@ label, input {
 
 
 .login_section {
-  display: inline-block;
-  justify-content: end;
-  width: 35%;
-  height: auto;
-  margin: 12rem 13rem 0 0;
+    display: inline-block;
+    justify-content: end;
+    width: 35%;
+    height: auto;
+    margin: 12rem 13rem 0 0;
 }
 
 #login_card {
-  background-color: #FBF9F9;
-  padding: 5px;
-  width: 100%;
-  height: 24rem;
-  margin-bottom: 10px;
-  box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.867);
+    background-color: #FBF9F9;
+    padding: 5px;
+    width: 100%;
+    height: 24rem;
+    margin-bottom: 10px;
+    box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.867);
 }
 
 #login_btn {
@@ -144,9 +144,6 @@ label, input {
 }
 
 
-@media screen and (max-width: 1150px) {
-  
-}
 
 @media screen and (max-width: 520px) {
   

@@ -2,8 +2,8 @@
     <div v-for="post in posts" :key="post.postid" class="card" style="width:45%;">
         <div class="card-body">
             <h4 class="card-title"><strong>{{ post.title }}</strong></h4>
-            <h5 class="card-subtitle mb-2 text-strong">posted by {{ post.author }}</h5>
-            <p class="card-text">{{ post.posttext }}</p>
+            <h5 class="card-subtitle mb-4 text-strong">posted by {{ post.author }}</h5>
+            <p class="card-text mb-4">{{ post.posttext }}</p>
                 <div class="card-img">
                     <img v-if="file" @change="getImage()" class="image" :src="fileSource" />
                 </div>
@@ -61,8 +61,12 @@ export default {
 }
 
 .card {
-    margin: 5rem 5rem 0 26rem
+    margin: 5rem 5rem 0 26rem;
+    background: linear-gradient(to bottom right, #9ea5f4, #ffffff);
+    box-shadow: 6px 6px 3px rgba(65, 64, 64, 0.867);
+    /* background-color: rgb(163, 161, 248); */
 }
+
 
 .card-body {
     padding: 2rem;
