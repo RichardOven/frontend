@@ -15,7 +15,6 @@
 
 
 <script>
-import axios from 'axios';
 
 export default {
     name: "PostCard",
@@ -26,29 +25,34 @@ export default {
         }
     },
 
-    created: function () {
+    created() {
         this.fetchPosts()
     },
-
     methods: {
-        getImage() {
-            this.file = this.$refs.file.files[0];
-            this.fileSource = URL.createObjectURL(this.$refs.file.files[0]);
-        },
-
         fetchPosts() {
-            axios
-                .get('http://localhost:3000/api/posts/')
-                .then((res) => {
-                    this.posts = res.data
-                    console.log(res.data)
-                })
-                .catch((error) => {
-                    console.log(error)
-                })
+        const requestOptions = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                // Authorization: "Bearer " + JSON.parse(localStorage.getItem("user")).token,
+            },
+        };
+        fetch("http://localhost:3000/api/posts", requestOptions)
+            .then((response) => {
+                return response
+            .json()
+                .then((data) => {
+                    console.log(data);
+                    this.posts = data;
+                });
+            })
+            .catch((error) => {
+            console.error("There was an error!", error);
+            });
         }
     }
 }
+
 </script>
 
 

@@ -80,7 +80,7 @@ export default {
         email: this.email,
         password: this.password
       }
-      // console.log(signUpForm)
+
       const requestOptions = {
         method: "POST",
         headers: {
@@ -89,24 +89,29 @@ export default {
         body: JSON.stringify(signUpForm),
       };
       if (this.passConditions.password && this.passConditions.email === true) {
-        // console.log(true)
+
         fetch("http://localhost:3000/api/users/signup", requestOptions)
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          if (response.ok) {
-            this.$router.push("/");
-          }
-        })
-        .catch((error) => {
-          error: error;
-        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            if (response.ok) {
+              // localStorage.setItem('token', res.data.token);
+              this.$router.push("/");
+            }
+          })
+          .catch((error) => {
+            error: error;
+          })
+        }
       }
-    }
-  },
-  
+    },
+  // mounted() {
+  //   if (localStorage.token) {
+  //     this.token = localStorage.token;
+  //   }
+  // },
   
   components: { 
     HeaderLogo

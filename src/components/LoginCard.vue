@@ -7,9 +7,9 @@
       <div class="col-md-4" id = "login_card">
         <form class = "login_form" id = "login_form">
           <label for ="email-input" class = "form-label"></label>
-            <input type= "text" class="form-control" id = "email" placeholder="Email" name ="email" required/>
+            <input type= "text" class="form-control" id = "email" placeholder="Email" v-model ="email" required/>
           <label for = "password-input" class = "form-label"></label>
-            <input type="text" class="form-control" id = "password" placeholder ="Password" name ="password" required/>
+            <input type="text" class="form-control" id = "password" placeholder ="Password" v-model ="password" required/>
           <!-- <p class="errorMessage">{{ errorMessage }}</p> -->
         </form>
           <router-link to ="/home">
@@ -29,8 +29,67 @@
 
 <script>
 
-// need to add validation
+export default {
+  data() {
+    return {
+      email: "",
+      password: ""
+      }
+  },
+  methods: {
+    LogIn() {
+      const logInForm = {
+        email: this.email,
+        password: this.password
+      }
+      const requestOptions = {
+        method: "POST",
+        headers: {
+        "Content-Type": "application/json",
+        },
+        body: JSON.stringify(logInForm),
+      }
+      fetch("http://localhost:3000/api/users/login", requestOptions)
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            if (response.ok) {
+              localStorage.setItem("user", JSON.stringify(data));
+              this.$router.push("/home");
+              console.log(data)
+            }
+          })
+          .catch((error) => {
+            error: error;
+          })
+        }
+      }
+  }
 
+
+
+
+
+
+
+
+    
+
+
+
+  
+  //   async LogIn() {
+  //     try {
+  //       let response = await this.$http.post("http://localhost:3000/api/users/login", this.login)
+  //       let token = response.data.token
+  //       localStorage.setItem("user", token)
+  //       this.$router.push("/")
+  //     } catch (err) {
+  //       console.log(err.response)
+  //     }
+  //   }
+  // }
 
 
 </script>

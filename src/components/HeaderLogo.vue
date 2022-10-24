@@ -2,7 +2,7 @@
     <div>
         <nav>
             <router-link to = "/">
-                <i class="fas fa-arrow-left" id="home_arrow"></i>
+                <i class="fas fa-arrow-left" id="home_arrow" @click="logUserOut()" ></i>
             </router-link>
             <div class = "signup_page_img">
                 <img id = "black-logo" alt="groupomania logo" src="../assets/icon-left-font-monochrome-black.svg" />
@@ -13,9 +13,18 @@
 
 <script>
 export default {
-    name: 'HeaderLogo'
+  data() {
+    return {
+      user: {}
+    };
+  },
+  methods: {
+      logUserOut() {
+      localStorage.removeItem("user");
+      this.$router.push("/");
+    }
+  }
 }
-
 
 </script>
 

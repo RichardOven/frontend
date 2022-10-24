@@ -18,7 +18,15 @@ import PostCard from '@/components/PostCard.vue';
 import HeaderLogo from '../components/HeaderLogo.vue'
     
 export default {
-    name: 'Home', 
+  data() {
+    return {
+      login: {
+        email: "",
+        password: ""
+      }
+    };
+  },
+  
     components: {
     PostCard,
     HeaderLogo

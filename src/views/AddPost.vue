@@ -88,15 +88,6 @@ export default {
             })
         }
     },
-    mounted() {
-      //api calling
-      axios
-          .post("http://localhost:3000/api/posts/")
-          .then((res) => {
-          console.log(res);
-          this.addpost = res.data;
-      });
-  },
 
   created: function () {
         this.sendPost()

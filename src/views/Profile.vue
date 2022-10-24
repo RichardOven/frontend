@@ -18,23 +18,23 @@ export default {
     name: 'Profile',
     components: {
       HeaderLogo
-    },
+    }
 
-    mounted() {
-        //api calling
-        axios
-            .get("http://localhost:3000/api/users/:id")
-            .then((res) => {
-            console.log(res);
-            this.profile = res.data;
-        });
-        axios
-            .get("http://localhost:3000/api/posts/:id")
-            .then((res) => {
-            console.log(res);
-            this.profile = res.data;
-        });
-    },
+    // mounted() {
+    //     //api calling
+    //     axios
+    //         .get("http://localhost:3000/api/users/:id")
+    //         .then((res) => {
+    //         console.log(res);
+    //         this.profile = res.data;
+    //     });
+    //     axios
+    //         .get("http://localhost:3000/api/posts/:id")
+    //         .then((res) => {
+    //         console.log(res);
+    //         this.profile = res.data;
+    //     });
+    // },
 }
 
 </script>
